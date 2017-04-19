@@ -1,0 +1,61 @@
+<html>
+<head>
+    <title>Park</title>
+<style>
+    button.import{
+width: 120px;
+height: 60px;
+text-align: center;
+font-size: 24px;
+margin: 4px 4px 4px 4px;
+border-radius: 6px;
+cursor: pointer;
+background-color:green;
+color:white;
+}
+.block-all, .block-left, .block-right{
+    display: flex;
+    height: 120px;
+	margin: 10px;
+	float: left;
+    text-align: center;
+    font-size: 24px;
+    border: none;
+    border-radius: 15px;
+    outline: none;
+    cursor: pointer;
+    -webkit-transition-duration: 0.4s; /* Safari */
+    transition-duration: 0.3s;
+}
+.block-all {
+	width: 580px;
+	background: #04BF9D;
+
+}
+.block-all:hover, .block-left:hover, .block-right:hover {
+box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+}
+.block-left {
+	width: 280px;
+	background: #F4E85C;
+	clear: both;
+}
+.block-right {
+	width: 280px;
+	background: #04BF9D;
+}
+.block-all p, .block-left p, .block-right p {
+    margin: auto auto;
+    vertical-align: middle;
+}
+</style>
+</head>
+<body>
+    <h1 style="text-align:center">Park</h1>
+    <a href="https://nhentai.net"><button class="block-all" ><p>ทั้งหมด</p></button></a>
+    <div class="block-left"><p>สัตว์เลี้ยงลูกด้วยนม (100)</p></div>
+    <div class="block-right"><p>สัตว์ปีก</p></div>
+    <div class="block-left"><p>สัตว์ครึ่งบกครึ่งน้ำ</p></div>
+    <div class="block-right"><p>สัตว์น้ำ</p></div>
+</body>
+</html>
