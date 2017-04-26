@@ -102,3 +102,7 @@
 
 ###!!! [Child][MessageChannel] Error: (msgtype=0xE40003,name=PTexture::Msg_Destroy) Channel error: cannot send/recv
 
+1493103206584	geckodriver	INFO	Listening on 127.0.0.1:41807
+1493103206846	mozprofile::profile	INFO	Using profile path /tmp/rust_mozprofile.bKYMWagaMlvQ
+1493103206847	geckodriver::marionette	INFO	Starting browser /usr/bin/firefox
+1493103206867	geckodriver::marionette	INFO	Connecting to Marionette on localhost:34383

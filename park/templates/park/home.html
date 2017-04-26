@@ -1,17 +1,13 @@
 <html>
 <head>
-    <title>Park</title>
+    <title>Animal</title>
 <style>
-    button.import{
-width: 120px;
-height: 60px;
-text-align: center;
-font-size: 24px;
-margin: 4px 4px 4px 4px;
-border-radius: 6px;
-cursor: pointer;
-background-color:green;
-color:white;
+
+div.list_button {
+width: 600px;
+position: relative;
+left: 50%;
+margin: 0 0 0 -300px;
 }
 .block-all, .block-left, .block-right{
     display: flex;
@@ -27,12 +23,7 @@ color:white;
     -webkit-transition-duration: 0.4s; /* Safari */
     transition-duration: 0.3s;
 }
-.block-all {
-	width: 580px;
-	background: #04BF9D;
-
-}
-.block-all:hover, .block-left:hover, .block-right:hover {
+.block-left:hover, .block-right:hover {
 box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
 }
 .block-left {
@@ -48,14 +39,46 @@ box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
     margin: auto auto;
     vertical-align: middle;
 }
+h2 { display: inline }
+
+
 </style>
+
 </head>
 <body>
-    <h1 style="text-align:center">Park</h1>
-    <a href="https://nhentai.net"><button class="block-all" ><p>ทั้งหมด</p></button></a>
-    <div class="block-left"><p>สัตว์เลี้ยงลูกด้วยนม (100)</p></div>
-    <div class="block-right"><p>สัตว์ปีก</p></div>
-    <div class="block-left"><p>สัตว์ครึ่งบกครึ่งน้ำ</p></div>
-    <div class="block-right"><p>สัตว์น้ำ</p></div>
+    <h1 style="text-align:center">Animal</h1>
+<a href="{% url 'park:search' %}">search</a>
+    <div class="list_button">
+    <a href="{% url 'park:animal_list' 'All' %}"><button class="block-left" >
+        <p>สัตว์ทั้งหมด<br>All Animals<br>
+        <span style="font-size:16px">({{ all_animal }})</span>
+    </p></button></a>
+
+    <a href="{% url 'park:animal_list' 'Mammal' %}"><button class="block-right">
+        <p>สัตว์เลี้ยงลูกด้วยนม<br>Mammal<br>
+        <span style="font-size:16px">({{ mammal_num }})</span>
+    </p></button></a>
+
+    <a href="{% url 'park:animal_list' 'Reptile' %}"><button class="block-left">
+        <p>สัตว์เลื้อยคลาน<br>Reptile<br>
+        <span style="font-size:16px">({{ reptile_num }})</span>
+    </p></button></a>
+
+    <a href="{% url 'park:animal_list' 'Bird' %}"><button class="block-right">
+        <p>สัตว์ปีก<br>Bird<br>
+        <span style="font-size:16px">({{ bird_num }})</span>
+    </p></button></a>
+
+    <a href="{% url 'park:animal_list' 'Amphibian' %}"><button class="block-left">
+        <p>สัตว์ครึ่งบกครึ่งน้ำ<br>Amphibian<br>
+        <span style="font-size:16px">({{ amphibian_num }})</span>
+    </p></button></a>
+
+    <a href="{% url 'park:animal_list' 'Fish' %}"><button class="block-right">
+        <p>สัตว์น้ำ<br>Fish<br>
+        <span style="font-size:16px">({{ fish_num }})</span>
+    </p></button></a>
+    </div>
+    
 </body>
 </html>

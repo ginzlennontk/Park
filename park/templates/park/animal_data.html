@@ -1,0 +1,44 @@
+<html>
+{% load static %}
+<head>
+    <title>{{animal.name}}</title>
+    <style>
+    </style>
+</head>
+<body>
+    <h1 style="text-align:center">{{ animal.thai_name }}<br>( {{ animal.name }} )</h1>
+    <hr>
+    <a href="{% url 'park:index' %}"><button>Home</button></a> >>
+    <a href="{% url 'park:animal_list' animal.class_name %}"><button>{{ animal.class_name }}</button></a><br><br>
+
+<div style="width:420px; float: left;margin-left:20px;">
+{% if animal.picture %}
+<img src="{{ animal.picture.url }}" width="360px"/><br><br>
+{% endif %}
+<table style="font-size:22px">
+<tr><td>ชื่อไทย : </td><td>&nbsp; &nbsp; {{ animal.thai_name }}</td></tr>
+<tr><td>ชื่ออังกฤษ : </td><td>&nbsp; &nbsp; {{ animal.name }}</td></tr>
+<tr><td>ชั้น : </td><td>&nbsp; &nbsp; {{ animal.class_name }}</td></tr>
+<tr><td>ลำดับ : </td><td>&nbsp; &nbsp; {{ animal.order }}</td></tr>
+<tr><td>วงศ์ : </td><td>&nbsp; &nbsp; {{ animal.family }}</td></tr>
+</table>
+</div>
+<div style="min-width:400px;margin-left:20px;margin-right:20px;">
+    <b>ข้อมูลทั่วไป</b><br>
+    {% if animal.info %}
+    {{ animal.info|safe }}
+    {% else %}
+    &nbsp; &nbsp; ไม่มีข้อมูล
+    {% endif %}
+    <br><br>
+    
+    <b>ถิ่นที่อยู่อาศัย</b><br>
+    {% if animal.habitat %}
+    {{ animal.habitat|safe }}
+    {% else %}
+    &nbsp; &nbsp; ไม่มีข้อมูล
+    {% endif %}    
+</div>
+<br>
+</body>
+</html>
