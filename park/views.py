@@ -34,20 +34,26 @@ def search(request):
     word = ""
     if(request.GET.get('word')):
         word = request.GET.get('word')
-        animal_list = Animal.objects.filter(
-            Q(thai_name__icontains=word) |
-            Q(name__icontains=word,) |
-            Q(class_name__icontains=word,) |
-            Q(order__icontains=word,) |
-            Q(family__icontains=word,) |
-            Q(info__icontains=word,) |
-            Q(habitat__icontains=word)
-        )
-        a = ["mammal","Reptile"]
-        b = Q()
-        for item in a:
-            b |= Q(class_name__icontains=item)
+        filter_list = { 'name'  :   Q(name__icontains=word) | 
+                                    Q(thai_name__icontains=word),
+                        'order' :   Q(order__icontains=word),
+                        'family':   Q(family__icontains=word),
+                        'info'  :   Q(info__icontains=word),
+                        'habitat':  Q(habitat__icontains=word)
+                        }
 
-        c = Animal.objects.filter(b | Q(habitat__icontains=word)).order_by("thai_name")
-        print(c)
+        if(request.GET.get('search') == 'all'):
+            animal_list = Animal.objects.filter(
+                Q(thai_name__icontains=word) |
+                Q(name__icontains=word,) |
+                Q(class_name__icontains=word,) |
+                Q(order__icontains=word) |
+                Q(family__icontains=word) |
+                Q(info__icontains=word) |
+                Q(habitat__icontains=word)
+            )
+        else:
+            search_by = request.GET.get('search')
+            animal_list = Animal.objects.filter(filter_list[search_by])
+
     return render(request, 'park/search.html',{'word':word, 'lists':animal_list})
