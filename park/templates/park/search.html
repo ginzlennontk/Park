@@ -130,6 +130,7 @@ box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
 </style>
     </head>
     <body>
+        <a href="{% url 'park:index' %}"><button class="button">Home</button></a><br><br>
         <form action="{% url 'park:search' %}" method="get">
             <input type="text" name="word" />
             <input type="submit" name="submit" value="SEARCH!"/>

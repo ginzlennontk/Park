@@ -23,7 +23,7 @@ margin: 0 0 0 -300px;
     -webkit-transition-duration: 0.4s; /* Safari */
     transition-duration: 0.3s;
 }
-.block-left:hover, .block-right:hover {
+.block-all:hover, .block-left:hover, .block-right:hover {
 box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
 }
 .block-left {
@@ -35,11 +35,14 @@ box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
 	width: 280px;
 	background: #04BF9D;
 }
+.block-all {
+    height: 50px;
+	width: 580px;
+}
 .block-all p, .block-left p, .block-right p {
     margin: auto auto;
     vertical-align: middle;
 }
-h2 { display: inline }
 
 
 </style>
@@ -47,8 +50,12 @@ h2 { display: inline }
 </head>
 <body>
     <h1 style="text-align:center">Animal</h1>
-<a href="{% url 'park:search' %}">search</a>
+
     <div class="list_button">
+    <a href="{% url 'park:search' %}"><button class="block-all">
+        <p>search</p>
+    </button></a>
+
     <a href="{% url 'park:animal_list' 'All' %}"><button class="block-left" >
         <p>สัตว์ทั้งหมด<br>All Animals<br>
         <span style="font-size:16px">({{ all_animal }})</span>

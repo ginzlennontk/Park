@@ -9,7 +9,8 @@
     <h1 style="text-align:center">{{ animal.thai_name }}<br>( {{ animal.name }} )</h1>
     <hr>
     <a href="{% url 'park:index' %}"><button>Home</button></a> >>
-    <a href="{% url 'park:animal_list' animal.class_name %}"><button>{{ animal.class_name }}</button></a><br><br>
+    <a href="{% url 'park:animal_list' animal.class_name %}"><button>{{ animal.class_name }}</button></a> >>
+    {{ animal.name }}<br><br>
 
 <div style="width:420px; float: left;margin-left:20px;">
 {% if animal.picture %}
@@ -31,13 +32,14 @@
     &nbsp; &nbsp; ไม่มีข้อมูล
     {% endif %}
     <br><br>
-    
+    <div style="float:left">
     <b>ถิ่นที่อยู่อาศัย</b><br>
     {% if animal.habitat %}
     {{ animal.habitat|safe }}
     {% else %}
     &nbsp; &nbsp; ไม่มีข้อมูล
-    {% endif %}    
+    {% endif %}
+    </div>
 </div>
 <br>
 </body>

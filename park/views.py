@@ -43,6 +43,11 @@ def search(request):
             Q(info__icontains=word,) |
             Q(habitat__icontains=word)
         )
-        for animal in animal_list:
-            print(animal.name)
+        a = ["mammal","Reptile"]
+        b = Q()
+        for item in a:
+            b |= Q(class_name__icontains=item)
+
+        c = Animal.objects.filter(b | Q(habitat__icontains=word)).order_by("thai_name")
+        print(c)
     return render(request, 'park/search.html',{'word':word, 'lists':animal_list})
