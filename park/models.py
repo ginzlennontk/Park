@@ -26,3 +26,16 @@ class Animal(models.Model):
 
     def __str__(self):
         return self.name
+
+class Pending(models.Model):
+    thai_name = models.CharField(max_length=200)
+    name = models.CharField(max_length=200)
+    class_name = models.CharField(max_length=200)
+    order = models.CharField(max_length=200)
+    family = models.CharField(max_length=200)
+    info = models.TextField(null=True, blank=True)
+    habitat = models.TextField(null=True, blank=True)
+    picture = models.ImageField(upload_to='pending_pic/',null=True, blank=True)
+
+    def __str__(self):
+        return self.name
