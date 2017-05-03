@@ -3,16 +3,16 @@ from uuid import uuid4
 import os
 
 STATUS_CHOICES = (
-    (None,'Pending'),
-    (None,'Published'),
+    ('Pending','Pending'),
+    ('Published','Published'),
 )
 
 CLASS_CHOICES = (
-    (None,'Mammal'),
-    (None,'Reptile'),
-    (None,'Amphibian'),
-    (None,'Fish'),
-    (None,'Bird'),
+    ('Mammal','Mammal'),
+    ('Reptile','Reptile'),
+    ('Amphibian','Amphibian'),
+    ('Fish','Fish'),
+    ('Bird','Bird'),
 )
 
 def path_and_rename(instance, filename):
@@ -40,3 +40,7 @@ class Animal(models.Model):
 
     def __str__(self):
         return self.name
+
+class AnimalImage(models.Model):
+    animal = models.ForeignKey(Animal, on_delete=models.CASCADE, related_name='image')
+    image = models.ImageField()
