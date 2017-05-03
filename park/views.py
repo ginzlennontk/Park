@@ -2,9 +2,8 @@ from django.http import Http404
 from django.shortcuts import render
 from django.http import HttpResponse
 
-from .models import Animal, Pending
+from .models import Animal
 from django.db.models import Q
-
 
 def index(request):
     return render(request, 'park/home.html',
@@ -59,7 +58,8 @@ def search(request):
     return render(request, 'park/search.html',{'word':word, 'lists':animal_list})
 
 def add_pending(request):
-    if(request.POST.get('submit')):
+    pass
+    '''if(request.POST.get('submit')):
         animal = Pending(thai_name = request.POST.get('thai_name'),
                         name = request.POST.get('name'),
                         class_name = request.POST.get('class_name'),
@@ -67,7 +67,6 @@ def add_pending(request):
                         family = request.POST.get('family'),
                         info = request.POST.get('info'),
                         habitat = request.POST.get('habitat'),
-                        picture = request.POST.get('pic_file'))
-        animal.save()
-    
+                        picture = request.FILES.get('pic_file'))
+        animal.save()'''
     return render(request, 'park/add_data.html')

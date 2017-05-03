@@ -2,6 +2,19 @@ from django.db import models
 from uuid import uuid4
 import os
 
+STATUS_CHOICES = (
+    (None,'Pending'),
+    (None,'Published'),
+)
+
+CLASS_CHOICES = (
+    (None,'Mammal'),
+    (None,'Reptile'),
+    (None,'Amphibian'),
+    (None,'Fish'),
+    (None,'Bird'),
+)
+
 def path_and_rename(instance, filename):
     upload_to = 'animal_pic'
     ext = filename.split('.')[-1]
@@ -17,25 +30,13 @@ def path_and_rename(instance, filename):
 class Animal(models.Model):
     thai_name = models.CharField(max_length=200)
     name = models.CharField(max_length=200)
-    class_name = models.CharField(max_length=200)
+    class_name = models.CharField(max_length=10,choices=CLASS_CHOICES)
     order = models.CharField(max_length=200)
     family = models.CharField(max_length=200)
     info = models.TextField(null=True, blank=True)
     habitat = models.TextField(null=True, blank=True)
     picture = models.ImageField(upload_to=path_and_rename,null=True, blank=True)
-
-    def __str__(self):
-        return self.name
-
-class Pending(models.Model):
-    thai_name = models.CharField(max_length=200)
-    name = models.CharField(max_length=200)
-    class_name = models.CharField(max_length=200)
-    order = models.CharField(max_length=200)
-    family = models.CharField(max_length=200)
-    info = models.TextField(null=True, blank=True)
-    habitat = models.TextField(null=True, blank=True)
-    picture = models.ImageField(upload_to='pending_pic/',null=True, blank=True)
+    status = models.CharField(max_length=10,choices=STATUS_CHOICES,null=True, blank=True)
 
     def __str__(self):
         return self.name

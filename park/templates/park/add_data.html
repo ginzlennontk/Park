@@ -134,9 +134,12 @@ box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
         <hr>
         <a href="{% url 'park:index' %}"><button class="button">Home</button></a><br><br>
 
+        
+        <form action="{% url 'park:add_animal' %}" method="POST" enctype="multipart/form-data">
 
-        <form action="{% url 'park:add_animal' %}" method="POST">
         {% csrf_token %}
+            
+
             ชื่อไทย ( thai name ) : <input type="text" name="thai_name" /><br/>
             ชื่ออังกฤษ ( name ) : <input type="text" name="name" /><br/>
             ชั้น ( Class ) : 
