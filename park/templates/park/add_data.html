@@ -1,6 +1,10 @@
 <html>
+    {% load static %}
     <head>
         <title>Add Animal</title>
+            <meta charset="UTF-8">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <script src="{% static '/JS/add_picture.js' %}"></script>
         <style>
 .button {
     background-color: #4CAF50; /* Green */
@@ -154,9 +158,17 @@ box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
             วงศ์ ( family ) : <input type="text" name="family" /><br/>
             <div>ข้อมูลทั่วไป ( info ) : <div><textarea name="info" cols="80" rows="10"></textarea></div></div>
             ถิ่นที่อยู่ ( habitat ) : <div><textarea name="habitat" cols="80" rows="10"></textarea></div></div><br/>
-            รูป : <input type="file" name="pic_file" accept=".png , .jpg"><br/><br/>
-
-            <input type="submit" name="submit" value="Submit!"/>
+            รูป : <br>          
+   		<div class="input_fields_wrap">
+   	    	<div><input type="file" id="pic_file" name="pic_file" accept=".png , .jpg"></div>
+		</div>
+        <p id="add_alert"></p>
+		<button type="button" class="add_field_button">Add More Picture</button><br><br>
+		
+        <input type="submit" name="submit" value="Submit!"/>
         </form>
+
+
+       
     </body>
 </html>

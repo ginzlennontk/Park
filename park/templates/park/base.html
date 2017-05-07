@@ -1,0 +1,21 @@
+<html>
+<head>
+    <title>{% block title %}{% endblock %}</title>
+    <meta charset="UTF-8">
+    {% load static %}
+    <link rel="stylesheet" href="{% static '/css/main.css' %}">
+    {% block style_n_script %}{% endblock %}
+</head>
+<body>
+    <h1 style="text-align:center">{% block header %}{% endblock %}</h1>
+    <hr>
+    {% block content %}
+    {% endblock %}
+    
+    <!--<div class="footer">
+        <a href="{% url 'park:add_animal' %}">
+            <button class="block-all"><p>Add Animal</p></button>
+        </a>
+    </div>-->
+</body>
+</html>

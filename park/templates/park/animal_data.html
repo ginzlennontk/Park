@@ -2,8 +2,41 @@
 {% load static %}
 <head>
     <title>{{animal.name}}</title>
-    <style>
-    </style>
+        <meta charset="UTF-8">
+<link rel="stylesheet" href="{% static '/css/main.css' %}">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="{% static '/css/popup.css' %}">
+    <script src="{% static '/JS/popup.js' %}"></script>
+    <script src="{% static '/JS/add_picture.js' %}"></script>
+<script> 
+
+$(document).ready(function(){
+    $("#flip").click(function(){
+        $("#panel").slideToggle("fast");
+    });
+});
+</script>
+
+<style> 
+#panel, #flip {
+    padding: 5px;
+    background-color: #e5eecc;
+    border: solid 1px #c3c3c3;
+    clear: both;
+    text-align: center;
+    min-width:400px;
+    font-size: 20px;
+    margin: 0px 20px 0 20px;
+    cursor:pointer;
+}
+
+#panel {
+    min-width:370px;
+    padding: 20px;
+    display: none;
+}
+</style>
+
 </head>
 <body>
     <h1 style="text-align:center">{{ animal.thai_name }}<br>( {{ animal.name }} )</h1>
@@ -11,10 +44,10 @@
     <a href="{% url 'park:index' %}"><button>Home</button></a> >>
     <a href="{% url 'park:animal_list' animal.class_name %}"><button>{{ animal.class_name }}</button></a> >>
     {{ animal.name }}<br><br>
-
-<div style="width:420px; float: left;margin-left:20px;">
-{% if animal.picture %}
-<img src="{{ animal.picture.url }}" width="360px"/><br><br>
+<div style="display:inline-block;">
+<div style="float:left;width:420px;margin-left:20px;">
+{% if image_list %}
+<a href="{{ image_list.first.image.url }}" ><img src="{{ image_list.first.image.url }}" width="360px"/></a><br><br>
 {% endif %}
 <table style="font-size:22px">
 <tr><td>ชื่อไทย : </td><td>&nbsp; &nbsp; {{ animal.thai_name }}</td></tr>
@@ -23,8 +56,9 @@
 <tr><td>ลำดับ : </td><td>&nbsp; &nbsp; {{ animal.order }}</td></tr>
 <tr><td>วงศ์ : </td><td>&nbsp; &nbsp; {{ animal.family }}</td></tr>
 </table>
+<br><br>
 </div>
-<div style="min-width:400px;margin-left:20px;margin-right:20px;">
+<div style="float:left;min-width:400px;max-width:900px">
     <b>ข้อมูลทั่วไป</b><br>
     {% if animal.info %}
     {{ animal.info|safe }}
@@ -32,15 +66,48 @@
     &nbsp; &nbsp; ไม่มีข้อมูล
     {% endif %}
     <br><br>
-    <div style="float:left">
-    <b>ถิ่นที่อยู่อาศัย</b><br>
-    {% if animal.habitat %}
-    {{ animal.habitat|safe }}
-    {% else %}
-    &nbsp; &nbsp; ไม่มีข้อมูล
-    {% endif %}
+
+        <b>ถิ่นที่อยู่อาศัย</b><br>
+        {% if animal.habitat %}
+        {{ animal.habitat|safe }}
+        {% else %}
+        &nbsp; &nbsp; ไม่มีข้อมูล
+        {% endif %}
+
+</div></div>
+<br><br>
+
+<div id="flip"><b>คลิกเพื่อดูรูปภาพเพิ่มเติม</b></div>
+<div id="panel">
+{% for animal_pic in image_list %}
+{% if forloop.counter != 1 %}
+<div style="display:inline-block;">
+<a href="{{ animal_pic.image.url }}" ><img src="{{ animal_pic.image.url }}" height="200px"/></a>
+</div>
+{% endif %}
+{% endfor %}
+<div style="display:inline-block;margin-left:30px">
+ <a class="btn" data-popup-open="popup-1" href="#">
+     <img src="{% static '/image/add_image.png' %}" height="200px"/>
+ </a>
+</div>
+</div><br>
+
+ 
+<div class="popup" data-popup="popup-1">
+    <div class="popup-inner">
+        <h2>Add Photo</h2>
+        <form action="{% url 'park:add_picture' animal.url_name %}" method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        <div class="input_fields_wrap">
+       <div><input type="file" id="pic_file" name="pic_file" accept=".png , .jpg"></div>
+</div>
+<br><button type="button" class="add_field_button">Add More Picture</button><br><br>
+            <input type="submit" name="submit" value="Submit!"/>
+            <button data-popup-close="popup-1" href="#">Close</button>
+        </form>
+        <a class="popup-close" data-popup-close="popup-1" href="#">x</a>
     </div>
 </div>
-<br>
 </body>
 </html>

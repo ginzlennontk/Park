@@ -1,13 +1,18 @@
-<html>
-<head>
-    <title>Animal</title>
+{% extends 'park/base.html' %}
+
+{% block title %}Animal{% endblock %}
+
+{% block style_n_script %}
 <style>
 
 div.list_button {
-width: 600px;
-position: relative;
-left: 50%;
-margin: 0 0 0 -300px;
+    display: inline-block;
+    width: 600px;
+    position: relative;
+    left: 50%;
+    overflow: auto;
+  padding-bottom: 80px;
+    margin: 0px 0px 0px -300px;
 }
 .block-all, .block-left, .block-right{
     display: flex;
@@ -46,14 +51,14 @@ box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
 
 
 </style>
+{% endblock %}
 
-</head>
-<body>
-    <h1 style="text-align:center">Animal</h1>
+{% block header %}Animal{% endblock %}
 
+{% block content %}
     <div class="list_button">
     <a href="{% url 'park:search' %}"><button class="block-all">
-        <p>search</p>
+        <p>&#X1F50E; search</p>
     </button></a>
 
     <a href="{% url 'park:animal_list' 'All' %}"><button class="block-left" >
@@ -86,10 +91,4 @@ box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
         <span style="font-size:16px">({{ fish_num }})</span>
     </p></button></a>
     </div>
-
-    <div class="list_button">
-    <a href="{% url 'park:add_animal' %}"><button class="block-all">
-        <p>Add Animal</p>
-    </button></a>    
-</body>
-</html>
+{% endblock %}

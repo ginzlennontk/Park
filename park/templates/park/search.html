@@ -154,7 +154,7 @@ box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
         {% if lists %}
 {% for animal in lists %}
     <br/>
-    <a href="{% url 'park:animal_data' animal.id %}">
+    <a href="{% url 'park:animal_data' animal.url_name %}">
     <button class="block-all list_{{ animal.class_name }}">
         <b class="animal_name">{{ animal.thai_name }} ( {{ animal.name }} )</b><br>
         <table>

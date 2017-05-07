@@ -1,6 +1,7 @@
 from django.http import Http404
 from django.shortcuts import render
-from django.http import HttpResponse
+from django.http import HttpResponseRedirect, HttpResponse
+from django.urls import reverse
 
 from .models import Animal
 from django.db.models import Q
@@ -24,9 +25,11 @@ def animal_list(request, class_name):
         raise Http404("Question does not exist")
     return render(request, 'park/animal_list.html',{'lists':animal_list,'all_class':all_class,'class_now':class_name})
 
-def animal_data(request, animal_id):
-    animal = Animal.objects.get(pk=animal_id)
-    return render(request, 'park/animal_data.html',{'animal':animal})
+def animal_data(request, animal_name):
+    animal = Animal.objects.get(name=animal_name.replace('_', ' '))
+    image_list = animal.image.filter(status="Published").order_by('image')
+    
+    return render(request, 'park/animal_data.html',{'animal':animal,'image_list':image_list})
 
 def search(request):
     animal_list = []
@@ -60,15 +63,26 @@ def search(request):
     return render(request, 'park/search.html',{'word':word, 'lists':animal_list})
 
 def add_pending(request):
-    pass
-    '''if(request.POST.get('submit')):
-        animal = Pending(thai_name = request.POST.get('thai_name'),
+    if(request.POST.get('submit')):
+        animal = Animal(thai_name = request.POST.get('thai_name'),
                         name = request.POST.get('name'),
                         class_name = request.POST.get('class_name'),
                         order = request.POST.get('order'),
                         family = request.POST.get('family'),
                         info = request.POST.get('info'),
                         habitat = request.POST.get('habitat'),
-                        picture = request.FILES.get('pic_file'))
-        animal.save()'''
+                        status= "Pending")
+        animal.save()
+
+        for pic in request.FILES.getlist('pic_file'):
+            animal.image.create(image=pic)
     return render(request, 'park/add_data.html')
+
+def add_picture(request,animal_name):
+    animal = Animal.objects.get(name=animal_name.replace('_', ' '))
+    for pic in request.FILES.getlist('pic_file'):
+            animal.image.create(image=pic,status="Pending")
+    image_list = animal.image.filter(status="Published").order_by('image')
+    
+    return HttpResponseRedirect(reverse('park:animal_data', args=(animal_name,)))
+
