@@ -1,140 +1,22 @@
-<html>
-    <head>
-        <title>Search</title>
-        <style>
-.button {
-    background-color: #4CAF50; /* Green */
-    border: 2px solid #4CAF50;
-    color: white;
-    padding: 16px 32px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 16px;
-    margin: 4px 2px;
-    -webkit-transition-duration: 0.4s; /* Safari */
-    transition-duration: 0.4s;
-    cursor: pointer;
-}
+{% extends 'park/base.html' %}
+{% load static %}
 
-.button_All {
-    background-color: white; 
-    color: black; 
-    border: 2px solid #123456;
-}
+{% block title %}Search{% endblock %}
 
-.button_All:hover, .sel_bt_All {
-    background-color: #123456;
-    color: white;
-    border: 2px solid #123456;
-}
+{% block style_n_script %}
+    <link rel="stylesheet" href="{% static '/css/list.css' %}">
+{% endblock %}
 
-.button_Mammal {
-    background-color: white; 
-    color: black; 
-    border: 2px solid #86592d;
-}
+{% block header %}
+<p id="main_page_head">Search</p>
+{% endblock %}
 
-.button_Mammal:hover, .sel_bt_Mammal {
-    background-color: #86592d;
-    color: white;
-    border: 2px solid #86592d;
-}
-
-.button_Reptile {
-    background-color: white; 
-    color: black; 
-    border: 2px solid #f44336;
-}
-
-.button_Reptile:hover, .sel_bt_Reptile {
-    background-color: #f44336;
-    color: white;
-    border: 2px solid #f44336;
-}
-
-.button_Bird {
-    background-color: white;
-    color: black;
-    border: 2px solid #04BF9D;
-}
-
-.button_Bird:hover, .sel_bt_Bird {
-    background-color: #04BF9D;
-    color: white;
-    border: 2px solid #04BF9D;}
-
-.button_Fish {
-    background-color: white;
-    color: black;
-    border: 2px solid #008CBA;
-}
-
-.button_Fish:hover, .sel_bt_Fish {
-    background-color: #008CBA;
-    color: white;
-    border: 2px solid #008CBA;
-}
-.button_Amphibian {
-    background-color: white;
-    color: black;
-    border: 2px solid #ff6600;
-}
-
-.button_Amphibian:hover, .sel_bt_Amphibian {
-    background-color: #ff6600;
-    color: white;
-    border: 2px solid #ff6600;
-}
-.block-all, .block-left, .block-right{
-	margin: 10px;
-    padding: 10px 20px 10px 20px;
-	float: left;
-    text-align: left;
-    font-size: 18px;
-    border: none;
-    border-radius: 15px;
-    outline: none;
-    cursor: pointer;
-    -webkit-transition-duration: 0.4s; /* Safari */
-    transition-duration: 0.3s;
-}
-.block-all {
-	width: 600px;
-	background: #04BF9D;
-    color: white;
-    text-shadow: 1px 1px 0 #444;
-	clear: both;
-}
-.block-all:hover, .block-left:hover, .block-right:hover {
-box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
-}
-
-.block-all p, .block-left p, .block-right p {
-    margin: auto auto;
-    vertical-align: middle;
-}
-.block-all table{
-    color: white;
-    text-shadow: 1px 1px 0 #444;
-	
-}
-.animal_name {
-    font-size: 28px;
-}
-.list_Mammal{background-color:#86592d; }
-.list_Reptile{background-color:#f44336; }
-.list_Bird{background-color:#04BF9D; }
-.list_Fish{background-color:#008CBA; }
-.list_Amphibian{background-color:#ff6600; }
-</style>
-    </head>
-    <body>
-        <h1 style="text-align:center">SEARCH</h1>
-        <hr>
-        <a href="{% url 'park:index' %}"><button class="button">Home</button></a><br><br>
-
-
+{% block content %}
+<div class="list_div">
+<a href="{% url 'park:index' %}"><button class="button button_menu">&#127968; Home</button></a>
+<a href="{% url 'park:animal_list' 'All' %}"><button class="button button_menu">&#X1F4C4; Animal List</button></a>
+</div>
+<div class="list_div">
         <form action="{% url 'park:search' %}" method="get">
             <input type="text" name="word" style="width:400px" />
             <input type="submit" name="submit" value="SEARCH!"/><br/>
@@ -149,24 +31,31 @@ box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
 
 
         {% if word %}
+        <div>
             ค้นหาด้วยคำว่า : {{ word }} <br/>
-            (พบรายชื่อสัตว์ {{ lists.count }} รายการ)
+
         {% if lists %}
-{% for animal in lists %}
-    <br/>
-    <a href="{% url 'park:animal_data' animal.url_name %}">
-    <button class="block-all list_{{ animal.class_name }}">
-        <b class="animal_name">{{ animal.thai_name }} ( {{ animal.name }} )</b><br>
-        <table>
-        <tr><td><b>ชั้น :</b></td><td> &nbsp;{{ animal.class_name }}</td></tr>
-        <tr><td><b>ลำดับ :</b></td><td> &nbsp;{{ animal.order }}</td></tr>
-        <tr><td><b>วงศ์ :</b></td><td> &nbsp;{{ animal.family }}</td></tr>
-        </table>
-    </button></a>
+            (พบรายชื่อสัตว์ {{ lists.count }} รายการ)
+        </div>
+    {% for animal in lists %}
+        <a href="{% url 'park:animal_data' animal.url_name %}">
+            {% if forloop.counter|divisibleby:2 %}
+            <button class="block-list list_{{ animal.class_name }}">
+            {% else %}
+            <button class="block-list list-left list_{{ animal.class_name }}">
+            {% endif %}
+            <b class="animal_name">{{ animal.thai_name }} ( {{ animal.name }} )</b><br>
+            <table>
+                <tr><td><b>ชั้น :</b></td><td> &nbsp;{{ animal.class_name }}</td></tr>
+                <tr><td><b>ลำดับ :</b></td><td> &nbsp;{{ animal.order }}</td></tr>
+                <tr><td><b>วงศ์ :</b></td><td> &nbsp;{{ animal.family }}</td></tr>
+            </table>
+            </button></a>
 {% endfor %}
 {% else %}
-    <p>ไม่มีรายชื่อสัตว์ที่ค้นหา.</p>
+    <p>ไม่พบรายชื่อสัตว์ที่ค้นหา.</p>
 {% endif %}
 {% endif %}
-    </body>
-</html>
+</div>
+{% endblock%}
+        

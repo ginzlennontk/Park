@@ -6,7 +6,29 @@ body {
     min-width: 660px;
     background-image: url('../image/pawbg.jpg');
 } 
+@font-face { 
+     font-family: main_head_font;
+     src: url('../font/KEVER.TTF'); 
+}
+@font-face { 
+     font-family: data_head_font;
+     src: url('../font/Quark-Bold.otf'); 
+}
 
+#main_page_head {
+    font-family:main_head_font;
+    text-align:center;
+    font-size:65px;
+    margin:0px;
+    color:white;
+}
+#data_page_head {
+    font-family:data_head_font;
+    text-align:center;
+    font-size:36px;
+    margin:0px;
+    color:white;
+}
 a:link   {  
 Text-decoration: none;   
 }
@@ -21,7 +43,6 @@ Text-decoration: none;
     margin-bottom: 20px;
 }
 #content {
-    
 	padding-bottom:50px; /* Height of the footer element */
 }
 #footer {

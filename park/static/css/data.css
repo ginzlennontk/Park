@@ -1,0 +1,59 @@
+#container_div{
+    display: table;
+    margin: 0 auto;
+    min-width: 1300px;
+}
+#footer {
+    min-width: 1300px;
+}
+#container_info{
+    float:left;
+    margin: 0px 20px;
+}
+
+#info{
+    min-width:400px;
+    max-width:800px;
+    background: rgba(255,255,255,0.8);
+    padding: 20px;
+    margin-bottom: 15px;
+    border-radius: 15px;
+}
+#data{
+    float:left;
+    background: rgba(255,255,255,0.8);
+    border-radius: 15px;
+    padding: 20px;
+    margin: 0px 0px 20px 20px;
+}
+#menu{
+    clear: both;
+    margin:20px;
+    background: rgba(255,255,255,0.8);
+    border-radius: 15px;
+    padding: 5px;
+}
+.button {
+    font-size: 12px;
+    padding: 5px 7px;
+    margin: 4px 2px;
+    -webkit-transition-duration: 0.4s; /* Safari */
+    transition-duration: 0.4s;
+    border-radius: 25px;
+    cursor: pointer;
+    color: white; 
+}
+.bt_home {
+    background-color: #4CAF50;
+    border: 2px solid #4CAF50;
+}
+.bt_name {
+    background-color: #F4E85C;
+    border: 2px solid #F4E85C;
+    color:black;
+}
+.bt_Mammal{background-color:#ac7339; border: 2px solid #ac7339; }
+.bt_Reptile{background-color:#ff4d4d; border: 2px solid #ff4d4d; }
+.bt_Bird{background-color:#04BF9D; border: 2px solid #04BF9D; }
+.bt_Fish{background-color:#008CBA; border: 2px solid #008CBA; }
+.bt_Amphibian{background-color: #ff8533; border: 2px solid #ff8533; }
