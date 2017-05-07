@@ -1,0 +1,46 @@
+div.list_button {
+display: table;
+margin: 20px auto;
+    width: 600px;
+    border-radius: 20px;
+background-color:rgba(255,255,255,0.8);
+
+padding: 20px;
+}
+.block-all, .block-left, .block-right{
+    display: flex;
+    height: 120px;
+	margin: 10px;
+	float: left;
+    text-align: center;
+    font-size: 24px;
+    border: none;
+    border-radius: 15px;
+    outline: none;
+    cursor: pointer;
+    -webkit-transition-duration: 0.4s; /* Safari */
+    transition-duration: 0.3s;
+}
+.block-all:hover, .block-left:hover, .block-right:hover {
+box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+}
+.block-all:hover {
+    background: white;
+}
+.block-left {
+	width: 280px;
+	background: #F4E85C;
+	clear: both;
+}
+.block-right {
+	width: 280px;
+	background: #04BF9D;
+}
+.block-all {
+    height: 50px;
+	width: 580px;
+}
+.block-all p, .block-left p, .block-right p {
+    margin: auto auto;
+    vertical-align: middle;
+}

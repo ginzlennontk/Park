@@ -1,17 +1,13 @@
 .list_div {
-width: 1340px;
-position: relative;
-left: 50%;
-margin: 0 0 0 -670px;
+display: table;
+margin: 20px auto;
 text-align: center;
+padding: 20px;
+border-radius: 30px;
+background-color:rgba(255,255,255,0.8);
 }
 
 .button {
-    display: inline-block;
-    background-color: #4CAF50; /* Green */
-    border: 2px solid #4CAF50;
-    color: white;
-    text-align: center;
     font-size: 14px;
     width: 110px;
     padding: 10px 15px;
@@ -20,13 +16,14 @@ text-align: center;
     transition-duration: 0.4s;
     border-radius: 25px;
     cursor: pointer;
+    
 }
 
 .button_menu {
     font-size: 24px;
     width: 250px;
     padding: 10px 15px;
-    margin: 30px 10px;
+    margin: 10px 10px;
     background-color: #4CAF50; /* Green */
     border: 2px solid #4CAF50;
     color: white;
@@ -113,9 +110,8 @@ text-align: center;
     cursor: pointer;
     -webkit-transition-duration: 0.4s; /* Safari */
     transition-duration: 0.3s;
-	width: 650px;
+	width: 600px;
     height: 180px;
-	background: #04BF9D;
     color: white;
     text-shadow: 1px 1px 0 #444;
 }

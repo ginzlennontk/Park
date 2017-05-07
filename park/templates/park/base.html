@@ -4,18 +4,33 @@
     <meta charset="UTF-8">
     {% load static %}
     <link rel="stylesheet" href="{% static '/css/main.css' %}">
+    <style>
+
+@font-face { 
+     font-family: font-head;
+     src: url({% static '/font/KEVER.TTF' %}); 
+}</style>
     {% block style_n_script %}{% endblock %}
 </head>
 <body>
-    <h1 style="text-align:center">{% block header %}{% endblock %}</h1>
-    <hr>
+    <div id="wrapper">
+    <div id="header">
+    <p style="font-family:font-head;text-align:center;font-size:65px;margin:0px;color:white">
+        {% block header %}{% endblock %}
+    </p>
+    </div>
+    <div id="content">
     {% block content %}
     {% endblock %}
-    
-    <!--<div class="footer">
+    </div>
+
+    <div id="footer">
+        <div class="text-footer">By Thakdanai Khunsaen Cpr.E 13 KMUTNB</div>
+        <button class="button-footer"><p>About</p></button>
         <a href="{% url 'park:add_animal' %}">
-            <button class="block-all"><p>Add Animal</p></button>
+            <button class="button-footer"><p>Add Animal</p></button>
         </a>
-    </div>-->
+    </div>
+    </div>
 </body>
 </html>
