@@ -29,6 +29,7 @@ body {
     margin:0px;
     color:white;
 }
+
 a:link   {  
 Text-decoration: none;   
 }
@@ -84,4 +85,17 @@ box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
     float:left;
     padding:15px;
     font-size:16px"
+}
+.about {
+    display: table;
+    width: 1200px;
+    margin: auto;
+    margin-bottom: 20px;
+    padding: 20px;
+    border-radius: 30px;
+    background-color:rgba(255,255,255,0.8);
+    font-family:data_head_font;
+    text-align:left;
+    font-size:24px;
+    color:black;
 }

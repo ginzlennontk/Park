@@ -19,7 +19,9 @@
 
     <div id="footer">
         <div class="text-footer">By Thakdanai Khunsaen Cpr.E 13 KMUTNB</div>
-        <button class="button-footer"><p>About</p></button>
+        <a href="{% url 'park:about' %}">
+            <button class="button-footer"><p>About</p></button>
+        </a>
         <a href="{% url 'park:add_animal' %}">
             <button class="button-footer"><p>Add Animal</p></button>
         </a>

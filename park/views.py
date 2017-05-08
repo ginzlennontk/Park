@@ -86,3 +86,5 @@ def add_picture(request,animal_name):
     
     return HttpResponseRedirect(reverse('park:animal_data', args=(animal_name,)))
 
+def about(request):
+    return render(request, 'park/about.html')

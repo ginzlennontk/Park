@@ -1,0 +1,72 @@
+{% extends 'park/base.html' %}
+{% load static %}
+
+{% block title %}About{% endblock %}
+
+{% block style_n_script %}
+    <link rel="stylesheet" href="{% static '/css/list.css' %}">
+    <link rel="stylesheet" href="{% static '/css/main.css' %}">
+{% endblock %}
+
+{% block header %}
+<p id="main_page_head">About</p>
+{% endblock %}
+
+{% block content %}
+    <div class="list_div">
+        <a href="{% url 'park:index' %}"><button class="button button_menu">&#127968; Home</button></a><br>
+    </div>
+
+    <div class="about">
+        <h2>เว็บ Animals</h2>
+        <p style="text-indent:2em">เว็บนี้ได้ถูกสร้างขึ้นมาเพื่อที่จะรวบรวมข้อมูลพื้นฐานของสัตว์ต่างๆเอาไว้ ให้ผู้มาเยือนได้ศึกษาหาความรู้หรือจะอ่านเพลินๆกันก็ได้
+            โดยภายในเว็บไซต์นี้จะมีส่วนประกอบต่างๆ ตามด้านล่างนี้เลย
+        </p>
+
+        <hr><br>
+        <div style="text-align:center"><img src="{% static '/image/about/main.png' %}" width="480px" /></div>
+        <h3>หน้าหลัก</h3>
+        <p style="text-indent:2em">จะเป็นหน้าแรกเลยที่จะเจอเมื่อเข้ามาในเว็บไซต์ โดยจะมีปุ่มเพื่อเข้าไปสู่หน้าค้นหา และหน้ารายชื่อสัตว์ซึ่งจะแบ่งไว้ให้เป็นหมวดต่างๆแล้ว<br><br>
+        </p>
+
+        <hr><br>
+        <div style="text-align:center">
+            <img src="{% static '/image/about/list.png' %}" width="480px" /> &nbsp;
+            <img src="{% static '/image/about/list2.png' %}" width="480px" />
+        </div>
+        <h3>หน้าแสดงรายชื่อสัตว์</h3>
+        <p style="text-indent:2em">เป็นหน้าที่จะแสดงรายชื่อสัตว์ทั้งหมดที่มีข้อมูลอยู่ภายในเว็บไซต์ออกมา สามารถคลิกเข้าไปดูข้อมูลของสัตว์ตัวนั้นๆได้ ที่ด้านบนก็จะมีปุ่มใช้คัดกรองให้แสดงรายชื่อสัตว์เฉพาะหมวดหมู่ที่เลือกอยู่ได้<br><br>
+        </p>
+
+        <hr><br>
+        <div style="text-align:center">
+            <img src="{% static '/image/about/data.png' %}" width="480px" /> &nbsp;
+            <img src="{% static '/image/about/data2.png' %}" width="480px" />
+        </div>
+        <h3>หน้าแสดงข้อมูลของสัตว์</h3>
+        <p style="text-indent:2em">หน้านี้จะประกอบไปด้วย รูปภาพ ข้อมูลทางวิทยาศาสตร์ ข้อมูลทั่วไป และก็ถิ่นที่อยู่อาศัย
+            โดยจะมีรูปภาพเพิ่มเติมอยู่ทางด้านล่าง ซึ่งคุณผู้ใช้ก็สามารถช่วยเราเพิ่มรูปภาพให้แก่สัตว์นั้นๆได้นะ :)<br><br>
+        </p>
+
+        <hr><br>
+        <div style="text-align:center">
+            <img src="{% static '/image/about/search.png' %}" width="480px" /> &nbsp;
+            <img src="{% static '/image/about/search2.png' %}" width="480px" />
+        </div>
+        <h3>หน้าค้นหารายชื่อสัตว์</h3>
+        <p style="text-indent:2em">คุณผู้ใช้สามารถที่จะใช้หน้านี้ค้นหารายชื่อที่ต้องการได้นะ โดยวิธีใช้ก็ไม่ยากเพียงแค่กรอกคำที่ต้องการค้นหาลงไปแล้วกด SEARCH ได้เลย!!
+            หรือจะเลือกค้นหาคำเจาะจงเฉพาะส่วนก็ได้เหมือนกัน<br><br>
+        </p>
+
+        <hr><br>
+        <div style="text-align:center">
+            <img src="{% static '/image/about/add.png' %}" width="480px" /> &nbsp;
+            <img src="{% static '/image/about/add2.png' %}" width="480px" />
+        </div>
+        <h3>หน้าเพิ่มข้อมูลสัตว์</h3>
+        <p style="text-indent:2em">หากคุณผู้ใช้พบว่า <i>"ยังไม่มีสัตว์บางตัวในเว็บไซต์นี้เลยนี่ อยากช่วยเพิ่มให้จังเลยน้า"</i> ก็ทำได้เช่นกัน
+            โดยคลิกเข้ามาปุ่ม Add Animal ที่ด้านล่างของหน้าเพจ(จะมีอยู่ในทุกๆหน้า) จากนั้นก็กรอกข้อมูลให้ครบถ้วนแล้วกด Submit ได้เลย
+            ทางเราจะทำการตรวจสอบความถูกต้องก่อนแล้วจึงจะนำขึ้นหน้าเว็บไซต์ภายหลังนะ<br><br>
+        </p>
+    </div>
+{% endblock %}

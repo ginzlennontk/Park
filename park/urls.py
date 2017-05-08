@@ -4,6 +4,7 @@ from . import views
 app_name = 'park'
 urlpatterns = [
     url(r'^$', views.index, name='index'),
+    url(r'^about/$', views.about, name='about'),
     url(r'^search/$', views.search, name='search'),
     url(r'^add_animal/$', views.add_pending, name='add_animal'),
     url(r'^(?P<class_name>[A-Za-z]+)/$', views.animal_list, name='animal_list'),
