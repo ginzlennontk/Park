@@ -22,14 +22,19 @@ def animal_list(request, class_name):
     elif(class_name in ('Mammal','Reptile','Bird','Fish','Amphibian')):
         animal_list = Animal.objects.filter(status="Published",class_name=class_name).order_by('thai_name')
     else:
-        raise Http404("Question does not exist")
+        return render(request, 'park/no_page.html')
     return render(request, 'park/animal_list.html',{'lists':animal_list,'all_class':all_class,'class_now':class_name})
 
 def animal_data(request, animal_name):
-    animal = Animal.objects.get(name=animal_name.replace('_', ' '))
-    image_list = animal.image.filter(status="Published").order_by('image')
-    
-    return render(request, 'park/animal_data.html',{'animal':animal,'image_list':image_list})
+    try:
+        animal = Animal.objects.get(name=animal_name.replace('_', ' '))
+        image_list = animal.image.filter(status="Published").order_by('image')
+        if(animal.status == "Published"):
+            return render(request, 'park/animal_data.html',{'animal':animal,'image_list':image_list})
+        else:
+            raise
+    except:
+        return render(request, 'park/no_page.html')
 
 def search(request):
     animal_list = []

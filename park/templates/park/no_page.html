@@ -1,0 +1,23 @@
+{% extends 'park/base.html' %}
+{% load static %}
+
+{% block title %}Add Animal{% endblock %}
+
+{% block style_n_script %}
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="{% static '/JS/add_picture.js' %}"></script>
+    <link rel="stylesheet" href="{% static '/css/list.css' %}">
+{% endblock %}
+
+{% block header %}
+<p id="main_page_head">Add Animal Data</p>
+{% endblock %}
+
+{% block content %}
+<div class="list_div">
+    <br><h1>ไม่พบหน้าเว็บนี้</h1><br>
+        <a href="{% url 'park:index' %}"><button class="button button_menu">&#127968; Home</button></a>
+        <a href="{% url 'park:search' %}"><button class="button button_menu">&#X1F50E; Search</button></a>
+        <a href="{% url 'park:index' %}"><button class="button button_menu">&#X1F4C4; Animal List</button></a>
+</div>
+{% endblock %}
