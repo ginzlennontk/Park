@@ -10,14 +10,14 @@
     <script src="{% static '/JS/add_picture.js' %}"></script>
 <script> 
 $(document).ready(function(){
-    $("#flip").click(function(){
-        $("#panel").slideToggle("fast");
+    $(".flip").click(function(){
+        $(".panel").slideToggle("fast");
     });
 });
 </script>
 
 <style> 
-#panel, #flip {
+.panel, .flip {
     padding: 5px;
     background-color: #e5eecc;
     border: solid 1px #c3c3c3;
@@ -29,7 +29,7 @@ $(document).ready(function(){
     cursor:pointer;
 }
 
-#panel {
+.panel {
     min-width:370px;
     padding: 20px;
     display: none;
@@ -41,15 +41,15 @@ $(document).ready(function(){
     <p id="data_page_head">{{ animal.thai_name }}<br>( {{ animal.name }} )</p>
 {% endblock %}
 {% block content %}
-    <div id="menu">
+    <div class="menu">
     <a href="{% url 'park:index' %}"><button class="button bt_home">Home</button></a> >>
     <a href="{% url 'park:animal_list' animal.class_name %}">
         <button class="button bt_{{ animal.class_name }}">{{ animal.class_name }}</button></a> >>
         <button class="button bt_name">{{ animal.name }}</button>
     </div>
 
-    <div id="container_div">
-        <div id="data">
+    <div class="container_div">
+        <div id="data" class="data">
             {% if image_list %}
                 <a href="{{ image_list.first.image.url }}" >
                     <img src="{{ image_list.first.image.url }}" width="360px"/></a><br><br>
@@ -63,8 +63,8 @@ $(document).ready(function(){
             </table>
             <br><br>
         </div>
-        <div id="container_info">
-        <div id="info">
+        <div class="container_info">
+        <div id="info" class="info">
             <b>ข้อมูลทั่วไป</b><br>
             {% if animal.info %}
                 {{ animal.info|safe }}
@@ -73,7 +73,7 @@ $(document).ready(function(){
             {% endif %}
             <br><br>
         </div>
-        <div id="info">
+        <div id="habitat" class="info">
             <b>ถิ่นที่อยู่อาศัย</b>
             <br>
                 {% if animal.habitat %}
@@ -86,10 +86,10 @@ $(document).ready(function(){
     </div>
 
     <div style="margin-bottom:30px;">
-    <div id="flip">
+    <div class="flip">
         <b>คลิกเพื่อดูรูปภาพเพิ่มเติม</b>
     </div>
-    <div id="panel">
+    <div class="panel">
         {% for animal_pic in image_list %}
             {% if forloop.counter != 1 %}
                 <div style="display:inline-block;">

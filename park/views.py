@@ -2,9 +2,17 @@ from django.http import Http404
 from django.shortcuts import render
 from django.http import HttpResponseRedirect, HttpResponse
 from django.urls import reverse
-
 from .models import Animal
 from django.db.models import Q
+from django.shortcuts import render_to_response
+from django.template import RequestContext
+
+
+def page_not_found(request):
+    response = render_to_response('park/no_page.html', {},
+                                  context_instance=RequestContext(request))
+    response.status_code = 404
+    return response
 
 def index(request):
     return render(request, 'park/home.html',
@@ -24,7 +32,7 @@ def animal_list(request, class_name):
     else:
         return render(request, 'park/no_page.html')
     return render(request, 'park/animal_list.html',{'lists':animal_list,'all_class':all_class,'class_now':class_name})
-
+ 
 def animal_data(request, animal_name):
     try:
         animal = Animal.objects.get(name=animal_name.replace('_', ' '))

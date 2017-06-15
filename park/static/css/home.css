@@ -1,11 +1,10 @@
 div.list_button {
-display: table;
-margin: 20px auto;
+    display: table;
+    margin: 20px auto;
     width: 600px;
     border-radius: 20px;
-background-color:rgba(255,255,255,0.8);
-
-padding: 20px;
+    background-color:rgba(255,255,255,0.8);
+    padding: 20px;
 }
 .block-all, .block-left, .block-right{
     display: flex;

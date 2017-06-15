@@ -17,7 +17,7 @@
 <div class="list_div">
         <a href="{% url 'park:index' %}"><button class="button button_menu">&#127968; Home</button></a>
         <a href="{% url 'park:search' %}"><button class="button button_menu">&#X1F50E; Search</button></a>
-        <a href="{% url 'park:index' %}"><button class="button button_menu">&#X1F4C4; Animal List</button></a>
+        <a href="{% url 'park:animal_list' 'All' %}"><button class="button button_menu">&#X1F4C4; Animal List</button></a>
 </div>
         <div class="list_div" style="text-align:left;">
         <form action="{% url 'park:add_animal' %}" method="POST" enctype="multipart/form-data">

@@ -16,32 +16,32 @@
         <p>&#X1F50E; search</p>
     </button></a>
 
-    <a href="{% url 'park:animal_list' 'All' %}"><button class="block-left" >
+    <a href="{% url 'park:animal_list' 'All' %}"><button id="All" class="block-left" >
         <p>สัตว์ทั้งหมด<br>All Animals<br>
         <span style="font-size:16px">({{ all_animal }})</span>
     </p></button></a>
 
-    <a href="{% url 'park:animal_list' 'Mammal' %}"><button class="block-right">
+    <a href="{% url 'park:animal_list' 'Mammal' %}"><button id="Mammal" class="block-right">
         <p>สัตว์เลี้ยงลูกด้วยนม<br>Mammal<br>
         <span style="font-size:16px">({{ mammal_num }})</span>
     </p></button></a>
 
-    <a href="{% url 'park:animal_list' 'Reptile' %}"><button class="block-left">
+    <a href="{% url 'park:animal_list' 'Reptile' %}"><button id="Reptile" class="block-left">
         <p>สัตว์เลื้อยคลาน<br>Reptile<br>
         <span style="font-size:16px">({{ reptile_num }})</span>
     </p></button></a>
 
-    <a href="{% url 'park:animal_list' 'Bird' %}"><button class="block-right">
+    <a href="{% url 'park:animal_list' 'Bird' %}"><button id="Bird" class="block-right">
         <p>สัตว์ปีก<br>Bird<br>
         <span style="font-size:16px">({{ bird_num }})</span>
     </p></button></a>
 
-    <a href="{% url 'park:animal_list' 'Amphibian' %}"><button class="block-left">
+    <a href="{% url 'park:animal_list' 'Amphibian' %}"><button id="Amphibian" class="block-left">
         <p>สัตว์ครึ่งบกครึ่งน้ำ<br>Amphibian<br>
         <span style="font-size:16px">({{ amphibian_num }})</span>
     </p></button></a>
 
-    <a href="{% url 'park:animal_list' 'Fish' %}"><button class="block-right">
+    <a href="{% url 'park:animal_list' 'Fish' %}"><button id="Fish" class="block-right">
         <p>สัตว์น้ำ<br>Fish<br>
         <span style="font-size:16px">({{ fish_num }})</span>
     </p></button></a>
