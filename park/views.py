@@ -26,12 +26,12 @@ def index(request):
 def animal_list(request, class_name):
     all_class = ["All","Mammal","Reptile","Bird","Fish","Amphibian"]
     if(class_name == 'All'):
-        animal_list = Animal.objects.filter(status="Published").order_by('thai_name')
+        list = Animal.objects.filter(status="Published").order_by('thai_name')
     elif(class_name in ('Mammal','Reptile','Bird','Fish','Amphibian')):
-        animal_list = Animal.objects.filter(status="Published",class_name=class_name).order_by('thai_name')
+        list = Animal.objects.filter(status="Published",class_name=class_name).order_by('thai_name')
     else:
         return render(request, 'park/no_page.html')
-    return render(request, 'park/animal_list.html',{'lists':animal_list,'all_class':all_class,'class_now':class_name})
+    return render(request, 'park/animal_list.html',{'lists':list,'all_class':all_class,'class_now':class_name})
  
 def animal_data(request, animal_name):
     try:
