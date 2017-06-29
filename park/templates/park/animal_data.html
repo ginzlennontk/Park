@@ -49,7 +49,7 @@ $(document).ready(function(){
     </div>
 
     <div class="container_div">
-        <div id="data" class="data">
+        <div name="data" class="data">
             {% if image_list %}
                 <a href="{{ image_list.first.image.url }}" >
                     <img src="{{ image_list.first.image.url }}" width="360px"/></a><br><br>
@@ -64,7 +64,7 @@ $(document).ready(function(){
             <br><br>
         </div>
         <div class="container_info">
-        <div id="info" class="info">
+        <div name="info" class="info">
             <b>ข้อมูลทั่วไป</b><br>
             {% if animal.info %}
                 {{ animal.info|safe }}
@@ -73,7 +73,7 @@ $(document).ready(function(){
             {% endif %}
             <br><br>
         </div>
-        <div id="habitat" class="info">
+        <div name="habitat" class="info">
             <b>ถิ่นที่อยู่อาศัย</b>
             <br>
                 {% if animal.habitat %}

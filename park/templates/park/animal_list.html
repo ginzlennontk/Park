@@ -35,9 +35,9 @@
         
             <a href="{% url 'park:animal_data' animal.url_name %}">
             {% if forloop.counter|divisibleby:2 %}
-            <button id='{{ animal.name }}' class="block-list list_{{ animal.class_name }}">
+            <button name='{{ animal.name }}' class="block-list list_{{ animal.class_name }}">
             {% else %}
-            <button id='{{ animal.name }}' class="block-list list-left list_{{ animal.class_name }}">
+            <button name='{{ animal.name }}' class="block-list list-left list_{{ animal.class_name }}">
             {% endif %}
             <b class="animal_name">{{ animal.thai_name }} ( {{ animal.name }} )</b><br>
             <div style="float:left">

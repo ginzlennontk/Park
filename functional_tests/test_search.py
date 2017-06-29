@@ -1,5 +1,6 @@
 from django.contrib.staticfiles.testing import StaticLiveServerTestCase
 from selenium import webdriver
+from selenium.webdriver.common.keys import Keys
 from park.models import Animal
 import time
 
@@ -22,21 +23,26 @@ class NewVisitorTest(StaticLiveServerTestCase):
         #คุณสมิธทำการตรวจเช็คดูว่าเขาเข้าถูกแอพหรือไม่
         self.assertIn('Animal', self.browser.title)
         
-        #คุณสมิธนั่งเพ่งมองไปที่ปุ่มประเภทของสัตว์ว่ามีอะไรบ้าง
-        button_list = self.browser.find_element_by_class_name('list_button').text
-        self.assertIn('All', button_list)
-        self.assertIn('Mammal', button_list)
-        self.assertIn('Reptile', button_list)
-        self.assertIn('Bird', button_list)
-        self.assertIn('Amphibian', button_list)
-        self.assertIn('Fish', button_list)
+        #จากนั้นเขาจึงกดไปที่ปุ่ม search เพื่อที่จะค้นหาข้อมูลของเจ้าแมวเหมียว
+        self.browser.find_element_by_name("search").click()
+        time.sleep(1)
         
-        #แต่คุณสมิธไม่รู้ว่าเจ้าแมวเหมียวเป็นสัตว์ประเภทไหน เขาจึงกดเลือกไปที่ปุ่มสัตว์ทั้งหมด
-        self.browser.find_element_by_name("All").click()
+        #เขาทำการเช็คหน้าเว็บแอพให้แน่ใจว่าเขาเข้ามาที่หน้า search แลัว
+        self.assertIn('Search', self.browser.title)
+        
+        #จากนั้นคุณสมิธจึงทำการค้นหาข้อมูลด้วยคำว่า "แมว"
+        inputbox = self.browser.find_element_by_name('word')
+        inputbox.send_keys('แมว')
+        inputbox.send_keys(Keys.ENTER)
+        time.sleep(1)
+        
+        #คุณสมิธนั่งดูผลลัพธ์ที่ค้นหาออกมาว่ามีข้อมูลของเจ้าแมวเหมียวหรือไม่
+        search_found = self.browser.find_element_by_name("Cat")
+        self.assertIn('แมว ( Cat )', search_found.text)
         time.sleep(1)
         
         #อ่า นั่นไงปุ่มของเจ้าแมวเหมียว เขาไม่รีรอที่จะเลื่อนเมาส์ไปกดที่ปุ่มนั่น
-        self.browser.find_element_by_name("Cat").click()
+        search_found.click()
         time.sleep(1)
         
         #คุณสมิธทำการตรวจเช็คให้แน่ใจว่านี่คือข้อมูลของเจ้าแมวเหมียว
