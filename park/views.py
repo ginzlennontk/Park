@@ -76,20 +76,27 @@ def search(request):
     return render(request, 'park/search.html',{'word':word, 'lists':animal_list})
 
 def add_pending(request):
+    error_message = ""
+    complete_message = ""
     if(request.POST.get('submit')):
-        animal = Animal(thai_name = request.POST.get('thai_name'),
-                        name = request.POST.get('name'),
-                        class_name = request.POST.get('class_name'),
-                        order = request.POST.get('order'),
-                        family = request.POST.get('family'),
-                        info = request.POST.get('info'),
-                        habitat = request.POST.get('habitat'),
-                        status= "Pending")
-        animal.save()
+        if("" in (request.POST.get('name'),request.POST.get('thai_name'))):
+            error_message = "กรุณากรอกชื่อของสัตว์ด้วยจ้า"
+        else:
+            animal = Animal(thai_name = request.POST.get('thai_name'),
+                            name = request.POST.get('name'),
+                            class_name = request.POST.get('class_name'),
+                            order = request.POST.get('order'),
+                            family = request.POST.get('family'),
+                            info = request.POST.get('info'),
+                            habitat = request.POST.get('habitat'),
+                            status= "Pending")
+            animal.save()
 
-        for pic in request.FILES.getlist('pic_file'):
-            animal.image.create(image=pic)
-    return render(request, 'park/add_data.html')
+            for pic in request.FILES.getlist('pic_file'):
+                animal.image.create(image=pic)
+            
+            complete_message = "ขอบคุณที่ช่วยเพิ่มข้อมูลให้กับเรา :)"
+    return render(request, 'park/add_data.html',{'error_message':error_message,'complete_message':complete_message})
 
 def add_picture(request,animal_name):
     animal = Animal.objects.get(name=animal_name.replace('_', ' '))

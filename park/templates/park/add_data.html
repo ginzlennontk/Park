@@ -24,6 +24,8 @@
 
         {% csrf_token %}
             <h3>กรอกข้อมูลสัตว์ที่ต้องการเพิ่ม</h3>
+            {% if error_message %}<span style='color:red' name="message">{{ error_message }}</span>{% endif %}
+            {% if complete_message %}<span style='color:green' name="message">{{ complete_message }}</span>{% endif %}
             <hr><br>
 
             ชื่อไทย ( thai name ) : <input type="text" name="thai_name" /><br/><br/>
